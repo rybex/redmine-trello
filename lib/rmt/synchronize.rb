@@ -19,15 +19,6 @@ module RMT
                                  list.user_token)
 
         data.each { |data| data.ensure_present_on(trello) }
-        trello.list_cards_in(list.target_list_id).each { |card| ensure_needed(trello, card, data) }
-      end
-    end
-
-  private
-
-    def ensure_needed(trello, card, data)
-      if not data.any? { |data| data.is_data_for? card }
-        trello.archive_card card
       end
     end
   end
